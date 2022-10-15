@@ -1,8 +1,12 @@
 import Registration from "../registration/Registration";
+import './App.sass'
 
 const App = () =>{
   return (
-        <Registration/>
+        <div className="App">
+          <Registration/>
+        </div>
+        
     )
 }
 
