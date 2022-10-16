@@ -1,11 +1,6 @@
-@import '../../style/variables.sass'
+@import './variables.sass'
 
-.registration
-    margin-top: 30px
-    position: relative
-    display: flex
-    flex-direction: column
-    align-items: baseline
+.form
     &_input
         margin-top: 20px
         padding: 10px
@@ -15,12 +10,7 @@
         border: solid $grey
         border-radius: 15px
         &:active, &:hover, &:focus
-            outline: none
-    &_form
-        padding: 10px 30px 30px
-        width: 400px
-        background-color: #fff
-        border-radius: 15px
+            outline: none 
     &_button
         cursor: pointer
         margin-top: 20px
@@ -28,11 +18,11 @@
         border-radius: 15px
         width: 200px
         height: 40px
-        background-color: $blue
+        background-color: $btn_main
         color: white
         &:hover
             border: none
-            background-color: $blue_hover
+            background-color: $btn_hover
     &_checkbox
         margin: 15px 0px 0px 7px
         position: relative
@@ -46,7 +36,7 @@
         label
             color: $grey
     h1
-        color: #fff
+        color: $grey
         margin-bottom: 20px
     &_block
         position: relative
@@ -56,5 +46,6 @@
             height: 18px
             top: 10px
             left: 10px
-            background-color: #fff
+            background-color: $white
+
    

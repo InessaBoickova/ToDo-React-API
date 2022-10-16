@@ -1,0 +1,31 @@
+@import '../../style/variables.sass'
+
+.welcome
+    margin-top: 50px
+    padding: 10px
+    background-color: $white
+    border-radius: 10px
+    &_wrapper
+        padding: 30px
+        width: 580px
+        margin-top: 10px
+        display: flex
+        flex-direction: column
+        align-items: baseline
+        background-color: $white
+        border-radius: 15px
+        border: $grey
+    button
+        margin: 15px
+        height: 40px
+        width: 250px
+        cursor: pointer
+        border: none
+        border-radius: 15px
+        background-color: $btn_main
+        color: white
+        &:hover
+            border: none
+            background-color: $btn_hover
+        &:disabled
+            background-color: $btn_disabled
