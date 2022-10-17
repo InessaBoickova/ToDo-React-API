@@ -1,18 +1,29 @@
 import '../../style/form.sass'
+import Service from '../services/SendForm'
 import { useState } from 'react'
 
-const SignIn = (props) =>{
+const SignIn = () =>{
+    let servic = new Service()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
   
     const validEmail = (e) =>{
-      e.length < 10 && setEmail(e) 
+       setEmail(e) 
     }
   
     const validPassworld = (e) =>{
-      e.length < 10 && setPassword(e) 
+      setPassword(e) 
     }
 
+    const sendForm = (e) =>{
+        e.preventDefault();
+        let data = {
+              "email": email,
+              "password": password, 
+          }
+        servic.singIn(data);
+    }
+  
     return (
         <div className= 'form'>
             <header>
@@ -29,7 +40,7 @@ const SignIn = (props) =>{
                     <label htmlFor="password">Your password</label>
                 </div>
                 
-                <button className='form_button'>Sing in</button>
+                <button className='form_button' onClick={(e)=> sendForm(e)}>Sing in</button>
 
             </form>
     </div>
