@@ -1,0 +1,42 @@
+@import '../../../style/variables.sass'
+
+.todo-form
+    display: flex
+    justify-content: space-evenly
+    &_input
+        display: block
+        min-width: 350px
+        height: 50px
+        border: solid $grey
+        border-radius: 15px
+        padding: 0 20px
+        background: $input_color
+        font-size: 18px
+        text-align: center
+        outline: none
+    &_btn
+        position: relative
+        border: none
+        border-radius: 50%
+        background-color: $btn_main
+        width: 56px
+        height: 56px
+        &::before
+            content: ""
+            position: absolute
+            height: 30px
+            width: 4px
+            background: $white
+            left: 26px
+            top: 13px
+        &::after
+            content: ""
+            position: absolute
+            height: 4px
+            width: 30px
+            background: $white
+            left: 13px
+            top: 26px
+        &:hover 
+            cursor: pointer
+            background-color: $btn_hover
