@@ -1,13 +1,9 @@
 import '../../style/form.sass'
-import form from '../services/SendForm';
-import { useState , useRef} from 'react'
+import Service from '../services/SendForm'
+import { useState} from 'react'
 
 const SingUp = () =>{
-  const ageInput = useRef(null);
-  const nameInput = useRef(null);
-  const usernNameInput  = useRef(null);
-  const emailInput = useRef(null);
-  const passwordInput = useRef(null);
+  let servic = new Service()
   const [name, setName] = useState('');
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
@@ -16,46 +12,31 @@ const SingUp = () =>{
   const [isMan, setIsMan] = useState(false);
 
   const validName = (e) =>{
-    (e === '' || e.length >= 15)
-      ?nameInput.current.style.border = 'solid red'
-      :nameInput.current.style.border = 'solid #5C5C5C'
-    setName(e)
+      setName(e)
   }
 
   const validUserName = (e) =>{
-    (e === '' || e.length >= 15)
-      ?usernNameInput.current.style.border = 'solid red'
-      : usernNameInput.current.style.border = 'solid #5C5C5C'
-    
-    setUserName(e)
+      setUserName(e)
   }
 
   const validEmail = (e) =>{
-    ( e === '' || e.length >= 15)
-      ?emailInput.current.style.border = 'solid red'
-      :emailInput.current.style.border = 'solid #5C5C5C'
-    setEmail(e)
+      setEmail(e)
   }
 
   const validPassworld = (e) =>{
-    ( e === '')
-      ?passwordInput.current.style.border = 'solid red'
-      :passwordInput.current.style.border = 'solid #5C5C5C'
-    setPassword(e)
+      setPassword(e)
   }
 
   const validAge = (e) =>{
-    ( e > 10 && e < 100)
-      ?ageInput.current.style.border = 'solid #5C5C5C'
-      :ageInput.current.style.border = 'solid red'
-    setAge(e);
+      setAge(e);
   }
 
   const onChecked = () =>{
     setIsMan(!isMan);
   }
 
-  const sendForm = () =>{
+  const sendForm = (e) =>{
+      e.preventDefault();
       let data = {
             "name": name,
             "username": userName,
@@ -65,7 +46,7 @@ const SingUp = () =>{
             "age": age
         }
       
-      form(data);
+      servic.singUp(data);
   }
 
   return (
@@ -80,7 +61,7 @@ const SingUp = () =>{
                         <input className="form_input"
                                name='name' type="text" 
                               onChange={(e) => validName(e.target.value) } 
-                              value= {name} ref={nameInput}
+                              value= {name} 
                                />
                         <label htmlFor="name">Your name</label>
                     </div>
@@ -88,38 +69,38 @@ const SingUp = () =>{
                     <div className="form_block">
                         <input  name='username'className="form_input"
                          type="text" onChange={(e) => validUserName(e.target.value)} 
-                         value={userName} ref={usernNameInput}/>
+                         value={userName} />
                         <label htmlFor="username">Your username</label>
                     </div>
 
                     <div className="form_block">
                         <input name='email'className="form_input" 
                         type="email" onChange={(e) => validEmail(e.target.value)} 
-                        value={email} ref = {emailInput}/>
+                        value={email} />
                         <label htmlFor="email">Your email</label>
                     </div>
 
                     <div className="form_block">
                         <input  name='password'className="form_input"
                          type="password" onChange={(e) => validPassworld(e.target.value)} 
-                         value={password} ref = {passwordInput}/>
+                         value={password}/>
                         <label htmlFor="password">Your password</label>
                     </div>
                     
                     <div className='form_checkbox'>
                         <label>Is Man</label>
-                        <input type="checkbox" checked={isMan}  onChange={onChecked} className="form_input" />
+                        <input type="checkbox" checked={isMan}
+                          onChange={onChecked} className="form_input" />
                     </div>
 
                     <div className="form_block">
                         <input min={10} max={100}
                           name='age'className="form_input" 
-                          ref={ageInput}
                           type="number" onChange={(e) => validAge(e.target.value)} value={age}/>
                         <label htmlFor="age">Your age</label>
                     </div>
 
-                    <button className='form_button' onClick={()=>sendForm()}>Sign up</button>
+                    <button className='form_button' onClick={(e)=>sendForm(e)}>Sign up</button>
 
                 </form>
             </div>
