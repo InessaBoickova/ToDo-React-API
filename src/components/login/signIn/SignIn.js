@@ -1,27 +1,19 @@
 import '../../../style/form.sass'
-import Service from '../../services/SendForm'
+import {Service} from '../../services/SendForm'
 import { useState } from 'react'
 
 const SignIn = () =>{
-    let servic = new Service()
+    const {signIn} = Service();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
   
-    const validEmail = (e) =>{
-       setEmail(e) 
-    }
-  
-    const validPassworld = (e) =>{
-      setPassword(e) 
-    }
-
     const sendForm = (e) =>{
         e.preventDefault();
         let data = {
               "email": email,
               "password": password, 
-          }
-        servic.signIn(data);
+        }
+        signIn(data);
     }
   
     return (
@@ -29,21 +21,21 @@ const SignIn = () =>{
             <header>
                 <h1>Sign in</h1>
            </header>
-            <form action="#">
+            <form onSubmit={(e)=> sendForm(e)}>
                 <div className="form_block">
-                    <input  name='email'className="form_input" type="email" onChange={(e) => validEmail(e.target.value)} value={email}/>
+                    <input  name='email'className="form_input" type="email" onChange={(e) => setEmail(e.target.value)} value={email}/>
                     <label htmlFor="email">Your email</label>
                 </div>
 
                 <div className="form_block">
-                    <input  name='password'className="form_input" type="password" onChange={(e) => validPassworld(e.target.value)} value={password}/>
+                    <input  name='password'className="form_input" type="password" onChange={(e) => setPassword(e.target.value)} value={password}/>
                     <label htmlFor="password">Your password</label>
                 </div>
                 
-                <button className='form_button' onClick={(e)=> sendForm(e)}>Sign in</button>
+                <button className='form_button' type='submit'>Sign in</button>
 
             </form>
-    </div>
+        </div>
     )
 }
 
