@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.css": "/ToDo-React-API/static/css/main.6d760192.css",
-    "main.js": "/ToDo-React-API/static/js/main.59469aeb.js",
+    "main.css": "/ToDo-React-API/static/css/main.ebe6f16b.css",
+    "main.js": "/ToDo-React-API/static/js/main.df16c1f8.js",
+    "static/media/delete-svgrepo-com.svg": "/ToDo-React-API/static/media/delete-svgrepo-com.e5d27d110fb495845839.svg",
+    "static/media/edit_icon.svg": "/ToDo-React-API/static/media/edit_icon.e9b0b6f1f187b69f955c.svg",
     "index.html": "/ToDo-React-API/index.html",
-    "main.6d760192.css.map": "/ToDo-React-API/static/css/main.6d760192.css.map",
-    "main.59469aeb.js.map": "/ToDo-React-API/static/js/main.59469aeb.js.map"
+    "main.ebe6f16b.css.map": "/ToDo-React-API/static/css/main.ebe6f16b.css.map",
+    "main.df16c1f8.js.map": "/ToDo-React-API/static/js/main.df16c1f8.js.map"
   },
   "entrypoints": [
-    "static/css/main.6d760192.css",
-    "static/js/main.59469aeb.js"
+    "static/css/main.ebe6f16b.css",
+    "static/js/main.df16c1f8.js"
   ]
 }
