@@ -1,9 +1,9 @@
-import './Welcome.sass'
-import SingUp from '../singUp/SingUp';
-import SignIn from '../singIn/SingIn';
+import './Main.sass'
+import SignUp from '../signUp/SignUp';
+import SignIn from '../signIn/SignIn';
 import { useState , useRef, useEffect} from 'react'
 
-const Welcome = () => {
+const Main = () => {
     const buttonUp = useRef(null);
     const buttonIn = useRef(null);
     const [show,setShow] = useState(false);
@@ -26,22 +26,22 @@ const Welcome = () => {
 
     return (
         <>
-            <div className="welcome">
+            <div className="main">
                 <button ref={buttonUp} onClick={()=>{
                     onShow();
                     onDisabled();
-                }}>Sing up</button>
+                }}>Sign up</button>
                 <button ref={buttonIn} onClick={()=>{
                     onShow();
                     onDisabled();
-                }}>Sing in</button>
+                }}>Sign in</button>
            </div>
 
-           <div className="welcome_wrapper">
-                {show ?  <SignIn/> : <SingUp/> }
+           <div className="main_wrapper">
+                {show ?  <SignIn/> : <SignUp/> }
            </div>
         </> 
     )
 }
 
-export default Welcome;
+export default Main;

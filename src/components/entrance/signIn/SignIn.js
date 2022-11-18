@@ -1,5 +1,5 @@
-import '../../style/form.sass'
-import Service from '../services/SendForm'
+import '../../../style/form.sass'
+import Service from '../../services/SendForm'
 import { useState } from 'react'
 
 const SignIn = () =>{
@@ -21,7 +21,7 @@ const SignIn = () =>{
               "email": email,
               "password": password, 
           }
-        servic.singIn(data);
+        servic.signIn(data);
     }
   
     return (
@@ -40,7 +40,7 @@ const SignIn = () =>{
                     <label htmlFor="password">Your password</label>
                 </div>
                 
-                <button className='form_button' onClick={(e)=> sendForm(e)}>Sing in</button>
+                <button className='form_button' onClick={(e)=> sendForm(e)}>Sign in</button>
 
             </form>
     </div>

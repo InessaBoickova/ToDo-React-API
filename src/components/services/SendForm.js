@@ -18,19 +18,23 @@ class Service{
                 })
             }else{
                 response.json().then(json => {   
+                    this.showTodo = true;
+                    this.showToDo(this.showToDo);
                     alert('окей')
                 })
             }
         })
     }
 
-    singUp = (data) =>{
+    showToDo = ()=> {
+       
+    }
+    signUp = (data) =>{
        this.post(this._registerUrl,data);
     }
 
-    singIn = (data) =>{
+    signIn = (data) =>{
         this.post(this._loginUrl,data);
     }
-
 }
 export default Service ;

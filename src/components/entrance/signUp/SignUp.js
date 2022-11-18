@@ -1,8 +1,8 @@
-import '../../style/form.sass'
-import Service from '../services/SendForm'
+import '../../../style/form.sass'
+import Service from '../../services/SendForm'
 import { useState} from 'react'
 
-const SingUp = () =>{
+const SignUp = () =>{
   let servic = new Service()
   const [name, setName] = useState('');
   const [userName, setUserName] = useState('');
@@ -46,7 +46,7 @@ const SingUp = () =>{
             "age": age
         }
       
-      servic.singUp(data);
+      servic.signUp(data);
   }
 
   return (
@@ -108,4 +108,4 @@ const SingUp = () =>{
     )
 }
 
-export default SingUp;
+export default SignUp;

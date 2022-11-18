@@ -1,14 +1,12 @@
-
-import Welcome from '../welcome/Welcome';
-import ToDo from '../toDo/toDo.js/ToDo'
+import Main from '../entrance/main/Main'
 import './App.sass'
 
+
 const App = () =>{
-   
     return (
             <div className="App">
-                <Welcome/>
-                {/* <ToDo/> */}
+               {/* <ToDo/>  */}
+               <Main />
             </div>   
         )
 }
