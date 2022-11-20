@@ -113,5 +113,26 @@ export const Service = ()=> {
         return resultJson;
     }
 
-    return {signIn,signUp,sendTask,getTask,deleteTask};
+    const isCompletedTask = async (id) =>{
+        const token = localStorage.getItem('token');
+
+        const result = await fetch(`https://first-node-js-app-r.herokuapp.com/api/todos/${id}/isCompleted`,{
+            method:'PATCH',  
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+
+            },
+        })
+
+        if(result.status === 400){
+            result.json().then((a)=> {
+                (a.message) ?  alert(a.message) : a.errors.map((item) => alert(item.msg));
+            })
+        }
+        const resultJson = await result.json();
+        return resultJson;
+    }
+
+    return {signIn,signUp,sendTask,getTask,deleteTask,isCompletedTask};
 }

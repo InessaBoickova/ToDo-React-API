@@ -8,11 +8,14 @@ const Task = (props) =>{
         <Fragment>
             {
                 (data)? data.map((item) => {
-                    let {ID,title} = item;
+                    let {ID,title,isCompleted} = item;
                     return (
                          <AddTask key = {ID}
+                                 id = {ID}
                                  task = {title}
-                                 deleteItem ={() => deleteItem(ID)}/>
+                                 isCompleted = {isCompleted}
+                                 deleteItem = {() => deleteItem(ID)}
+                        />
                     )
                 }) : '...in progres'
             }

@@ -12,13 +12,10 @@ const ToDo =()=>{
         getTask().then((i)=> setData(i));
     },[])
 
-   
     const deleteItem =(id)=>{
         deleteTask(id)
     }
     
-    
-
     // const deleteAllItem =()=>{
     //     this.setState(()=> {
     //         return {
@@ -55,6 +52,5 @@ const ToDo =()=>{
         </div>
     );
 }
-
 
 export default ToDo;

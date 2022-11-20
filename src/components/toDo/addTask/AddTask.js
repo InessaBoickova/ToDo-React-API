@@ -1,11 +1,12 @@
 import { useRef, useState } from 'react';
+import {Service} from '../../services/SendForm'
 import './AddTask.sass'
 
 const AddTask = (props) =>{
-    
+    const {isCompletedTask} = Service();
     let textInput = useRef()
-    let {task, deleteItem} = props;
-    let [classLict , setClassList] = useState('task');
+    let {task, deleteItem,id,isCompleted} = props;
+    let [classLict , setClassList] = useState((isCompleted)? 'task done' : 'task');
     let [newText, setNewText] = useState(task);
     let [readOnly,SetReadOnly] = useState(true);
    
@@ -15,12 +16,14 @@ const AddTask = (props) =>{
     }
 
     const onDone = () =>{
-        if(classLict.includes('done')){
-            setClassList(classLict.replace('done',''))
+        if(classLict === ('task done')){
+            setClassList(classLict.replace('task done','task'))
         }else{
-            setClassList(classLict += ' done')
+            setClassList(classLict.replace('task','task done'))
+            isCompletedTask(id);
         }  
     }
+    console.log(isCompleted)
 
     return (
         <div className={classLict}>
