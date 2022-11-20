@@ -11,10 +11,7 @@ const SignUp = () =>{
     const [password, setPassword] = useState('');
     const [age, setAge] = useState(20);
     const [isMan, setIsMan] = useState(false);
-
-    const onChecked = () =>{
-        setIsMan(!isMan);
-    }
+    const [isWoman, setIsWoman] = useState(false);
 
     const sendForm = (e) =>{
         e.preventDefault();
@@ -68,10 +65,17 @@ return (
                 </div>
                 
                 <div className='form_checkbox'>
-                    <label>Is Man</label>
+                    <label>Are you a man?</label>
                     <input type="checkbox" checked={isMan}
-                        onChange={onChecked} className="form_input" />
+                        onChange={() => setIsMan(!isMan)} className="form_input" />
                 </div>
+
+                <div className='form_checkbox'>
+                    <label>Are you a woman?</label>
+                    <input type="checkbox" checked={isWoman}
+                        onChange={() => setIsWoman(!isWoman)} className="form_input" />
+                </div>
+
 
                 <div className="form_block">
                     <input min={10} max={100}
