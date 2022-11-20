@@ -3,18 +3,19 @@ import AddTask from "../addTask/AddTask";
 
 const Task = (props) =>{
     const {data, deleteItem} = props;
-    const elem = data.map((item) => {
-        let {id,task} = item;
-        return (
-             <AddTask key = {id}
-                     task = {task}
-                     deleteItem ={() => deleteItem(id)}/>
-        )
-    })
-    
+
     return (
         <Fragment>
-            {elem}
+            {
+                (data)? data.map((item) => {
+                    let {ID,title} = item;
+                    return (
+                         <AddTask key = {ID}
+                                 task = {title}
+                                 deleteItem ={() => deleteItem(ID)}/>
+                    )
+                }) : '...in progres'
+            }
         </Fragment>
     )
 }

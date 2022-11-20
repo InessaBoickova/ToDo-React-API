@@ -2,13 +2,13 @@ import { useRef, useState } from 'react';
 import './AddTask.sass'
 
 const AddTask = (props) =>{
+    
     let textInput = useRef()
     let {task, deleteItem} = props;
     let [classLict , setClassList] = useState('task');
     let [newText, setNewText] = useState(task);
     let [readOnly,SetReadOnly] = useState(true);
    
-
     const editText= () => {
         SetReadOnly(!readOnly);
         textInput.current.focus();
