@@ -6,20 +6,16 @@ import {Service} from '../../services/SendForm'
 import './ToDo.sass'
 
 const ToDo =()=>{
-    const {sendTask,getTask} = Service();
+    const {sendTask,getTask, deleteTask} = Service();
     const [data,setData] = useState([]);
     useEffect(()=>{
         getTask().then((i)=> setData(i));
     },[])
 
    
-    // const deleteItem =(id)=>{
-    //     this.setState(({data})=> {
-    //         return {
-    //           data: data.filter(item => item.id !== id)
-    //         }
-    //     })
-    // }
+    const deleteItem =(id)=>{
+        deleteTask(id)
+    }
     
     
 
@@ -50,7 +46,7 @@ const ToDo =()=>{
             <section className="todo_wrapper">
                 <TaskAddForm onAdd={addItem} />
                 <Task data = {data}
-                        // deleteItem ={deleteItem} 
+                        deleteItem ={deleteItem} 
                         />
                 <ClearButton length = {totalNumTask} 
                             // deleteAllItem = {deleteAllItem}

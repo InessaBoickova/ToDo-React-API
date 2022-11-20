@@ -7,7 +7,7 @@ export const Service = ()=> {
     const navigate = useNavigate();
     
     const signUp = async (data) =>{
-        try{
+        try {
             const result = await fetch(_registerUrl,{
                 method:'POST',
                 body: JSON.stringify(data),
@@ -92,5 +92,26 @@ export const Service = ()=> {
         return resultJson;
     }
 
-    return {signIn , signUp,sendTask,getTask};
+    const deleteTask = async (id) =>{
+        const token = localStorage.getItem('token');
+
+        const result = await fetch(`https://first-node-js-app-r.herokuapp.com/api/todos/${id}`,{
+            method:'DELETE',  
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+
+            },
+        })
+
+        if(result.status === 400){
+            result.json().then((a)=> {
+                (a.message) ?  alert(a.message) : a.errors.map((item) => alert(item.msg));
+            })
+        }
+        const resultJson = await result.json();
+        return resultJson;
+    }
+
+    return {signIn,signUp,sendTask,getTask,deleteTask};
 }
