@@ -2,12 +2,14 @@ import { useState,useEffect } from "react";
 import TaskAddForm from "../taskAddForm/TaskAddForm";
 import ClearButton from "../clearButton/ClearButton";
 import Task from "../task/Task";
+import Spinner from '../../spinner/Spinner'
 import {Service} from '../../services/SendForm'
 import './ToDo.sass'
 
 const ToDo =()=>{
     const {sendTask,getTask, deleteTask} = Service();
     const [data,setData] = useState([]);
+
     useEffect(()=>{
         getTask().then((i)=> setData(i));
     },[])
@@ -37,10 +39,10 @@ const ToDo =()=>{
             </header>
                 
             <section className="todo_wrapper">
-                <TaskAddForm onAdd={addItem} />
-                <Task data = {data}
+                <TaskAddForm onAdd={addItem}/>
+                {(data.length <= 0)? <Spinner/> :  <Task data = {data}
                         deleteItem ={deleteItem} 
-                        />
+                        />}
                 <ClearButton length = {totalNumTask} 
                             deleteAllItem = {deleteAllItem}
                             />

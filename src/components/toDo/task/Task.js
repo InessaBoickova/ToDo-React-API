@@ -6,18 +6,16 @@ const Task = (props) =>{
 
     return (
         <Fragment>
-            {
-                (data)? data.map((item) => {
-                    let {ID,title,isCompleted} = item;
-                    return (
-                         <AddTask key = {ID}
-                                 id = {ID}
-                                 task = {title}
-                                 isCompleted = {isCompleted}
-                                 deleteItem = {() => deleteItem(ID)}
-                        />
+            {data.map((item) => {
+            let {ID,title,isCompleted} = item;
+            return (
+                    <AddTask key = {ID}
+                            id = {ID}
+                            task = {title}
+                            isCompleted = {isCompleted}
+                            deleteItem = {() => deleteItem(ID)}/>
                     )
-                }) : '...in progres'
+                })
             }
         </Fragment>
     )

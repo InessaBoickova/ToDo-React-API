@@ -3,7 +3,7 @@ import {Service} from '../../services/SendForm'
 import './AddTask.sass'
 
 const AddTask = (props) =>{
-    const {isCompletedTask} = Service();
+    const {isCompletedTask,upDatedTask} = Service();
     let textInput = useRef()
     let {task, deleteItem,id,isCompleted} = props;
     let [classLict , setClassList] = useState((isCompleted)? 'task done' : 'task');
@@ -13,6 +13,7 @@ const AddTask = (props) =>{
     const editText= () => {
         SetReadOnly(!readOnly);
         textInput.current.focus();
+        upDatedTask(id,newText);
     }
 
     const onDone = () =>{
@@ -20,10 +21,9 @@ const AddTask = (props) =>{
             setClassList(classLict.replace('task done','task'))
         }else{
             setClassList(classLict.replace('task','task done'))
-            isCompletedTask(id);
         }  
+        isCompletedTask(id);
     }
-
     return (
         <div className={classLict}>
             <input ref = {textInput} type="text"
@@ -33,10 +33,10 @@ const AddTask = (props) =>{
                 onChange = {(e) => setNewText(e.target.value)}/>
            
                 <div>
-                    <button className='task_button change' 
+                    <button className= 'task_button change'
                             onClick={editText}>   
                     </button>
-                    <button className="task_button delete"
+                    <button className="task_button delete "
                             onClick={deleteItem}>
                     </button>
                 </div>
