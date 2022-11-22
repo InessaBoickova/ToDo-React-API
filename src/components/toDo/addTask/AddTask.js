@@ -23,7 +23,6 @@ const AddTask = (props) =>{
             isCompletedTask(id);
         }  
     }
-    console.log(isCompleted)
 
     return (
         <div className={classLict}>

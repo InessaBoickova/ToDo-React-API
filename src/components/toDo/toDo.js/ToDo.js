@@ -16,13 +16,9 @@ const ToDo =()=>{
         deleteTask(id)
     }
     
-    // const deleteAllItem =()=>{
-    //     this.setState(()=> {
-    //         return {
-    //           data: []
-    //         }
-    //     })
-    // }
+    const deleteAllItem =()=>{
+        getTask().then((i)=> i.map((i)=> deleteTask(i.ID)));
+    }
 
     const addItem = (task) => {
         if(!task){
@@ -46,7 +42,7 @@ const ToDo =()=>{
                         deleteItem ={deleteItem} 
                         />
                 <ClearButton length = {totalNumTask} 
-                            // deleteAllItem = {deleteAllItem}
+                            deleteAllItem = {deleteAllItem}
                             />
             </section> 
         </div>
