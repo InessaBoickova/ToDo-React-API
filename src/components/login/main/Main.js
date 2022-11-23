@@ -12,7 +12,6 @@ const Main = () => {
     useEffect(() => {
         buttonIn.current.disabled = disabled;
         buttonUp.current.disabled = !disabled;
-
     })
 
     const onShow = () =>{
@@ -21,7 +20,6 @@ const Main = () => {
 
     const onDisabled = () =>{
         setDisabled(!disabled);
-       
     }
 
     return (

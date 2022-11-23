@@ -54,7 +54,7 @@ export const Service = ()=> {
                 localStorage.setItem('token', resultJson.token);
                 navigate('/ToDo-React-API/todo');
             }
-
+            return resultJson
         }catch(error){
             console.log(error);
         }

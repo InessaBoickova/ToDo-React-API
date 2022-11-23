@@ -9,17 +9,29 @@ import './ToDo.sass'
 const ToDo =()=>{
     const {sendTask,getTask, deleteTask} = Service();
     const [data,setData] = useState([]);
-
+    const [spinner,setSpinner] = useState(true);
+  
     useEffect(()=>{
-        getTask().then((i)=> setData(i));
+        getTask().then((i)=> {
+            setData(i);
+        })
+        setSpinner(false)
     },[])
 
+    useEffect(()=>{
+        getTask().then((i)=>{
+            setData(i);
+        });
+    },[data])
+
     const deleteItem =(id)=>{
-        deleteTask(id)
+        deleteTask(id);
     }
     
     const deleteAllItem =()=>{
-        getTask().then((i)=> i.map((i)=> deleteTask(i.ID)));
+        getTask().then((i)=> i.map((i)=>{
+            deleteTask(i.ID);
+        }));
     }
 
     const addItem = (task) => {
@@ -28,7 +40,6 @@ const ToDo =()=>{
             return addItem;
         }
         sendTask(task);
-        getTask()
     }
 
     let totalNumTask = data.length;
@@ -40,8 +51,8 @@ const ToDo =()=>{
                 
             <section className="todo_wrapper">
                 <TaskAddForm onAdd={addItem}/>
-                {(data.length <= 0)? <Spinner/> :  <Task data = {data}
-                        deleteItem ={deleteItem} 
+                {(spinner)? <Spinner/> :  <Task data = {data}
+                        deleteItem = {deleteItem} 
                         />}
                 <ClearButton length = {totalNumTask} 
                             deleteAllItem = {deleteAllItem}
