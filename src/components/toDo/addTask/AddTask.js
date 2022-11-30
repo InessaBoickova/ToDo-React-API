@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import {Service} from '../../services/SendForm'
+import { Service } from '../../../services/SendForm';
 import './AddTask.sass'
 
 const AddTask = (props) =>{
@@ -13,7 +13,13 @@ const AddTask = (props) =>{
     const editText= () => {
         SetReadOnly(!readOnly);
         textInput.current.focus();
-        upDatedTask(id,newText);
+    }
+
+    const changeInput = (e)=>{
+        setNewText(e.target.value);
+        if(newText.length > 1){
+            upDatedTask(id,newText); 
+        }
     }
 
     const onDone = () =>{
@@ -30,7 +36,7 @@ const AddTask = (props) =>{
                 readOnly = {readOnly}
                 onClick={onDone} 
                 value = {newText} 
-                onChange = {(e) => setNewText(e.target.value)}/>
+                onChange = {(e) =>changeInput(e) }/>
            
                 <div>
                     <button className= 'task_button change'

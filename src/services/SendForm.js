@@ -1,14 +1,12 @@
 import { useNavigate } from "react-router-dom";
 
 export const Service = ()=> {
-    const _loginUrl = 'https://first-node-js-app-r.herokuapp.com/api/auth/login';
-    const _registerUrl = 'https://first-node-js-app-r.herokuapp.com/api/users/register';
-    const _todos = 'https://first-node-js-app-r.herokuapp.com/api/todos'
+    const _baseUrl = 'https://first-node-js-app-r.herokuapp.com/api/'
     const navigate = useNavigate();
     
     const signUp = async (data) =>{
         try {
-            const result = await fetch(_registerUrl,{
+            const result = await fetch(`${_baseUrl}users/register`,{
                 method:'POST',
                 body: JSON.stringify(data),
                 headers: {
@@ -33,7 +31,7 @@ export const Service = ()=> {
     
     const signIn = async (data) =>{
         try{
-            const result = await fetch(_loginUrl,{
+            const result = await fetch(`${_baseUrl}auth/login`,{
                 method:'POST',
                 body: JSON.stringify(data),
                 headers: {
@@ -63,7 +61,7 @@ export const Service = ()=> {
     const sendTask = async (task) =>{
         const token = localStorage.getItem('token')
         try{
-            const result = await fetch(_todos,{
+            const result = await fetch(`${_baseUrl}todos`,{
                 method:'POST',
                 body: JSON.stringify({title: task}),
                 headers: {
@@ -82,7 +80,7 @@ export const Service = ()=> {
     const getTask = async () =>{
         const token = localStorage.getItem('token');
 
-        const result = await fetch(_todos,{
+        const result = await fetch(`${_baseUrl}todos`,{
             method:'GET',  
             headers: {
                 'Content-Type': 'application/json',
@@ -96,7 +94,7 @@ export const Service = ()=> {
     const deleteTask = async (id) =>{
         const token = localStorage.getItem('token');
 
-        const result = await fetch(`${_todos}/${id}`,{
+        const result = await fetch(`${_baseUrl}todos/${id}`,{
             method:'DELETE',  
             headers: {
                 'Content-Type': 'application/json',
@@ -117,7 +115,7 @@ export const Service = ()=> {
     const isCompletedTask = async (id) =>{
         const token = localStorage.getItem('token');
 
-        const result = await fetch(`${_todos}/${id}/isCompleted`,{
+        const result = await fetch(`${_baseUrl}todos/${id}/isCompleted`,{
             method:'PATCH',  
             headers: {
                 'Content-Type': 'application/json',
@@ -137,7 +135,7 @@ export const Service = ()=> {
     const upDatedTask = async (id,task) =>{
         const token = localStorage.getItem('token');
 
-        const result = await fetch(`https://first-node-js-app-r.herokuapp.com/api/mongoose/todos/${id}`,{
+        const result = await fetch(`${_baseUrl}mongoose/todos/${id}`,{
             method:'PATCH',
             body: JSON.stringify({title: task}),  
             headers: {

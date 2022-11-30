@@ -3,7 +3,7 @@ import TaskAddForm from "../taskAddForm/TaskAddForm";
 import ClearButton from "../clearButton/ClearButton";
 import Task from "../task/Task";
 import Spinner from '../../spinner/Spinner'
-import {Service} from '../../services/SendForm'
+import { Service } from "../../../services/SendForm";
 import './ToDo.sass'
 
 const ToDo =()=>{

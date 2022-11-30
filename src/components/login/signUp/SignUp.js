@@ -1,9 +1,8 @@
 import '../../../style/form.sass'
-import {Service} from '../../services/SendForm'
+import { Service } from '../../../services/SendForm';
 import {useState} from 'react'
 
 const SignUp = () =>{
-
     const {signUp} = Service();
     const [name, setName] = useState('');
     const [userName, setUserName] = useState('');
@@ -85,7 +84,6 @@ return (
                 </div>
 
                 <button type='submit' className='form_button'>Sign up</button>
-
             </form>
         </div>
     </div>

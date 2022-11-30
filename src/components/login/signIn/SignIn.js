@@ -1,5 +1,5 @@
 import '../../../style/form.sass'
-import {Service} from '../../services/SendForm'
+import { Service } from '../../../services/SendForm';
 import { useState } from 'react'
 
 const SignIn = () =>{
