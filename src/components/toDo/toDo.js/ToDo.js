@@ -1,7 +1,7 @@
 import { useState,useEffect } from "react";
 import TaskAddForm from "../taskAddForm/TaskAddForm";
 import ClearButton from "../clearButton/ClearButton";
-import Task from "../task/Task";
+import AddTask from "../addTask/AddTask";
 import Spinner from '../../spinner/Spinner'
 import { Service } from "../../../services/SendForm";
 import './ToDo.sass'
@@ -42,7 +42,7 @@ const ToDo =()=>{
         sendTask(task);
     }
 
-    let totalNumTask = data.length;
+    const totalNumTask = data.length;
     return (
         <div className="todo">
             <header className="todo_header">
@@ -51,7 +51,7 @@ const ToDo =()=>{
                 
             <section className="todo_wrapper">
                 <TaskAddForm onAdd={addItem}/>
-                {(spinner)? <Spinner/> :  <Task data = {data}
+                {(spinner)? <Spinner/> :  <AddTask data = {data}
                         deleteItem = {deleteItem} 
                         />}
                 <ClearButton length = {totalNumTask} 

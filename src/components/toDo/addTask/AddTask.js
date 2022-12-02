@@ -1,52 +1,22 @@
-import { useRef, useState } from 'react';
-import { Service } from '../../../services/SendForm';
-import './AddTask.sass'
+import { Fragment } from "react";
+import Task from "../task/Task";
 
-const AddTask = (props) =>{
-    const {isCompletedTask,upDatedTask} = Service();
-    let textInput = useRef()
-    let {task, deleteItem,id,isCompleted} = props;
-    let [classLict , setClassList] = useState((isCompleted)? 'task done' : 'task');
-    let [newText, setNewText] = useState(task);
-    let [readOnly,SetReadOnly] = useState(true);
+const AddTask = ({data, deleteItem}) =>{
    
-    const editText= () => {
-        SetReadOnly(!readOnly);
-        textInput.current.focus();
-    }
-
-    const changeInput = (e)=>{
-        setNewText(e.target.value);
-        if(newText.length > 1){
-            upDatedTask(id,newText); 
-        }
-    }
-
-    const onDone = () =>{
-        if(classLict === ('task done')){
-            setClassList(classLict.replace('task done','task'))
-        }else{
-            setClassList(classLict.replace('task','task done'))
-        }  
-        isCompletedTask(id);
-    }
     return (
-        <div className={classLict}>
-            <input ref = {textInput} type="text"
-                readOnly = {readOnly}
-                onClick={onDone} 
-                value = {newText} 
-                onChange = {(e) =>changeInput(e) }/>
-           
-                <div>
-                    <button className= 'task_button change'
-                            onClick={editText}>   
-                    </button>
-                    <button className="task_button delete "
-                            onClick={deleteItem}>
-                    </button>
-                </div>
-        </div>
+        <Fragment>
+            {data.map((item) => {
+            let {ID,title,isCompleted} = item;
+            return (
+                    <Task key = {ID}
+                            id = {ID}
+                            task = {title}
+                            isCompleted = {isCompleted}
+                            deleteItem = {() => deleteItem(ID)}/>
+                    )
+                })
+            }
+        </Fragment>
     )
 }
 

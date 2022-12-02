@@ -1,7 +1,6 @@
 import './ClearButton.sass'
 
-const ClearButton = (props) =>{
-    let {length,deleteAllItem} = props;
+const ClearButton = ({length,deleteAllItem}) =>{
     return (
         <div className="clear">
             <div className="clear_count">

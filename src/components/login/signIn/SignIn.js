@@ -9,7 +9,7 @@ const SignIn = () =>{
   
     const sendForm = (e) =>{
         e.preventDefault();
-        let data = {
+        const data = {
               "email": email,
               "password": password, 
         }

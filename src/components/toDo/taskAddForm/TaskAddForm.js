@@ -3,9 +3,8 @@ import { useState } from "react"
 import './TaskAddForm.sass'
 
 
-const TaskAddForm = (props)=> {
-    let {onAdd} = props;
-    let [task,setTask] = useState('');
+const TaskAddForm = ({onAdd} )=> {
+    const [task,setTask] = useState('');
     
     const onSubmit = (e) => {
         e.preventDefault();

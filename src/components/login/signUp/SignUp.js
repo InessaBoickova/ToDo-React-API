@@ -14,7 +14,7 @@ const SignUp = () =>{
 
     const sendForm = (e) =>{
         e.preventDefault();
-        let data = {
+        const data = {
             "name": name,
             "username": userName,
             "email": email,

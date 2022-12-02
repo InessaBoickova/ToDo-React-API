@@ -1,6 +1,6 @@
 import Main from '../login/main/Main'
 import ToDo from '../toDo/toDo.js/ToDo'
-import PrivateRoute from '../hos/PrivateRoute'
+import PrivateRoute from '../../hoc/PrivateRoute'
 import Page404 from '../Page404/404'
 import { BrowserRouter,Route,Routes } from 'react-router-dom'
 import './App.sass'
