@@ -1,5 +1,6 @@
 @import '../../../style/variables.sass'
 .task
+    animation: show-task 0.3s
     position: relative
     display: flex
     justify-content: space-between
@@ -37,7 +38,7 @@
         cursor: pointer
     &:hover
         .task_button
-            animation: ani 0.8s
+            animation: show 0.8s
         .delete
             background-color: $btn_main
             background-image: url('../../../../public/img/delete-svgrepo-com.svg')
@@ -58,10 +59,17 @@
 .done
     text-decoration: line-through
 
-@keyframes ani 
+@keyframes show
     0% 
         opacity: 0
     100% 
         opacity: 1
 
+@keyframes show-task
+    from 
+        margin-left: 100%
+        width: 300%
+    to 
+        margin-left: 0%
+        width: 100%
         

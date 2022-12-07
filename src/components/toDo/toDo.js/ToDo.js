@@ -9,30 +9,32 @@ import './ToDo.sass'
 const ToDo =()=>{
     const {sendTask,getTask, deleteTask} = Service();
     const [data,setData] = useState([]);
-    const [spinner,setSpinner] = useState(true);
   
     useEffect(()=>{
         getTask().then((i)=> {
             setData(i);
         })
-        setSpinner(false)
     },[])
 
-    useEffect(()=>{
-        getTask().then((i)=>{
-            setData(i);
-        });
-    },[data])
+    const upDate = ()=>{
+        setTimeout (()=>{
+            getTask().then((i)=>{
+                setData(i);
+            });
+        },1000);
+    }
 
     const deleteItem =(id)=>{
         deleteTask(id);
+        upDate();
     }
     
     const deleteAllItem =()=>{
         getTask().then((i)=> i.map((i)=>{
             deleteTask(i.ID);
         }));
-    }
+        upDate();
+    } 
 
     const addItem = (task) => {
         if(!task){
@@ -40,6 +42,7 @@ const ToDo =()=>{
             return addItem;
         }
         sendTask(task);
+        upDate();
     }
 
     const totalNumTask = data.length;
@@ -51,12 +54,9 @@ const ToDo =()=>{
                 
             <section className="todo_wrapper">
                 <TaskAddForm onAdd={addItem}/>
-                {(spinner)? <Spinner/> :  <AddTask data = {data}
-                        deleteItem = {deleteItem} 
-                        />}
+                 <AddTask data = {data} deleteItem = {deleteItem} />
                 <ClearButton length = {totalNumTask} 
-                            deleteAllItem = {deleteAllItem}
-                            />
+                            deleteAllItem = {deleteAllItem}/>
             </section> 
         </div>
     );

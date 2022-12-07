@@ -1,7 +1,5 @@
 import { useState } from "react"
-
 import './TaskAddForm.sass'
-
 
 const TaskAddForm = ({onAdd} )=> {
     const [task,setTask] = useState('');

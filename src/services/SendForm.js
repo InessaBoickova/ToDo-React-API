@@ -88,17 +88,22 @@ export const Service = ()=> {
 
     const getTask = async () =>{
         const token = localStorage.getItem('token');
-
-        const result = await fetch(`${_baseUrl}todos`,{
-            method:'GET',  
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
-            },
-        })
-        const resultJson = await result.json();
-        return resultJson;
+        try{
+            const result = await fetch(`${_baseUrl}todos`,{
+                method:'GET',  
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            const resultJson = await result.json();
+            return resultJson;
+            }catch(error){
+                console.log(error)
+            }
     }
+
+  
 
     const deleteTask = async (id) =>{
         const token = localStorage.getItem('token');
