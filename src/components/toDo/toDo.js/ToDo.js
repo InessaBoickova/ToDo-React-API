@@ -2,34 +2,33 @@ import { useState,useEffect } from "react";
 import TaskAddForm from "../taskAddForm/TaskAddForm";
 import ClearButton from "../clearButton/ClearButton";
 import AddTask from "../addTask/AddTask";
-import Spinner from '../../spinner/Spinner'
 import { Service } from "../../../services/SendForm";
 import './ToDo.sass'
 
-const ToDo =()=>{
+const ToDo = () =>{
     const {sendTask,getTask, deleteTask} = Service();
     const [data,setData] = useState([]);
   
-    useEffect(()=>{
+    useEffect(() => {
         getTask().then((i)=> {
             setData(i);
         })
     },[])
 
-    const upDate = ()=>{
-        setTimeout (()=>{
+    const upDate = () =>{
+        setTimeout (() =>{
             getTask().then((i)=>{
                 setData(i);
             });
         },1000);
     }
 
-    const deleteItem =(id)=>{
+    const deleteItem = (id) => {
         deleteTask(id);
         upDate();
     }
     
-    const deleteAllItem =()=>{
+    const deleteAllItem = () =>{
         getTask().then((i)=> i.map((i)=>{
             deleteTask(i.ID);
         }));

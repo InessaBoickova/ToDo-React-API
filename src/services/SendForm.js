@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-export const Service = ()=> {
+export const Service = () => {
     const _baseUrl = 'https://first-node-js-app-r.herokuapp.com/api/'
     const navigate = useNavigate();
     const [loading,setLoaging] = useState(false)
@@ -82,6 +82,7 @@ export const Service = ()=> {
             const resultJson = await result.json();
             return resultJson;
             }catch(error){
+                alert('Something went wrong, try again')
                 console.log(error)
             }
     }
@@ -99,11 +100,10 @@ export const Service = ()=> {
             const resultJson = await result.json();
             return resultJson;
             }catch(error){
+                alert('Something went wrong, try again')
                 console.log(error)
             }
     }
-
-  
 
     const deleteTask = async (id) =>{
         const token = localStorage.getItem('token');

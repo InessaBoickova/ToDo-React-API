@@ -9,7 +9,6 @@ const SignIn = () =>{
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     
-  
     const sendForm = (e) =>{
         e.preventDefault();
         const data = {

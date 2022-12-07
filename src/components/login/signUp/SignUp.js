@@ -38,8 +38,7 @@ return (
                     <input className="form_input"
                             name='name' type="text" 
                             onChange={(e) => setName(e.target.value) } 
-                            value= {name} 
-                            />
+                            value= {name}/>
                     <label htmlFor="name">Your name</label>
                 </div>
 
@@ -75,7 +74,6 @@ return (
                     <input type="checkbox" checked={isWoman}
                         onChange={() => setIsWoman(!isWoman)} className="form_input" />
                 </div>
-
 
                 <div className="form_block">
                     <input min={10} max={100}

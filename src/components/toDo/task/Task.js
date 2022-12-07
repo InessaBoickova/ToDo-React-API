@@ -26,6 +26,7 @@ const Task = ({task, deleteItem,id,isCompleted}) =>{
                                     :setClassList(classLict.replace('task','task done'))
         isCompletedTask(id);
     }
+    
     return (
         <div className={classLict}>
             <input ref = {textInput} type="text"

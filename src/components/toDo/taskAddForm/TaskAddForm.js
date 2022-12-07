@@ -23,7 +23,6 @@ const TaskAddForm = ({onAdd} )=> {
             <button className="todo-form_btn" type="submit"></button>
         </form>      
     )
-  
 }
 
 export default TaskAddForm;
