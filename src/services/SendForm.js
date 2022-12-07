@@ -1,10 +1,13 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export const Service = ()=> {
     const _baseUrl = 'https://first-node-js-app-r.herokuapp.com/api/'
     const navigate = useNavigate();
+    const [loading,setLoaging] = useState(false)
     
     const signUp = async (data) =>{
+        setLoaging(true);
         try {
             const result = await fetch(`${_baseUrl}users/register`,{
                 method:'POST',
@@ -22,14 +25,17 @@ export const Service = ()=> {
             }
             const resultJson = await result.json();
             if(!resultJson.errors){
-                alert('Successful registration. Sing in')
+                alert('Successful registration. Sing in');
+                setLoaging(false);
             }
             }catch(error){
                 console.log(error);
+                setLoaging(false);
             }
     }
     
     const signIn = async (data) =>{
+        setLoaging(true);
         try{
             const result = await fetch(`${_baseUrl}auth/login`,{
                 method:'POST',
@@ -51,10 +57,13 @@ export const Service = ()=> {
             if(resultJson.token){
                 localStorage.setItem('token', resultJson.token);
                 navigate('/ToDo-React-API/todo');
+                setLoaging(false);
             }
             return resultJson
+
         }catch(error){
             console.log(error);
+            setLoaging(false);
         }
     }
 
@@ -153,5 +162,5 @@ export const Service = ()=> {
         return resultJson;
     }
 
-    return {signIn,signUp,sendTask,getTask,deleteTask,isCompletedTask, upDatedTask};
+    return {signIn,signUp,sendTask,getTask,deleteTask,isCompletedTask, upDatedTask,loading};
 }

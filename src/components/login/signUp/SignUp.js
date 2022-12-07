@@ -1,9 +1,10 @@
 import '../../../style/form.sass'
 import { Service } from '../../../services/SendForm';
+import Spinner from '../../spinner/Spinner';
 import {useState} from 'react'
 
 const SignUp = () =>{
-    const {signUp} = Service();
+    const {signUp,loading} = Service();
     const [name, setName] = useState('');
     const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
@@ -83,7 +84,9 @@ return (
                     <label htmlFor="age">Your age</label>
                 </div>
 
-                <button type='submit' className='form_button'>Sign up</button>
+                <button type='submit' className='form_button'>
+                    {loading ? <Spinner/> : 'Sign up' }
+                </button>
             </form>
         </div>
     </div>

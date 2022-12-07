@@ -1,11 +1,14 @@
 import '../../../style/form.sass'
 import { Service } from '../../../services/SendForm';
+import Spinner from '../../spinner/Spinner'
 import { useState } from 'react'
 
 const SignIn = () =>{
-    const {signIn} = Service();
+    const {signIn,loading} = Service();
+   
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    
   
     const sendForm = (e) =>{
         e.preventDefault();
@@ -31,9 +34,9 @@ const SignIn = () =>{
                     <input  name='password'className="form_input" type="password" onChange={(e) => setPassword(e.target.value)} value={password}/>
                     <label htmlFor="password">Your password</label>
                 </div>
-                
-                <button className='form_button' type='submit'>Sign in</button>
-
+                <button className='form_button' type='submit'>
+                    {loading ? <Spinner/> : 'Sign in' }
+                </button>
             </form>
         </div>
     )
