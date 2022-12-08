@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/ToDo-React-API/static/css/main.459b5ef5.css",
-    "main.js": "/ToDo-React-API/static/js/main.3ae4a3c3.js",
+    "main.js": "/ToDo-React-API/static/js/main.9d2d4eed.js",
     "static/media/delete-svgrepo-com.svg": "/ToDo-React-API/static/media/delete-svgrepo-com.e5d27d110fb495845839.svg",
     "static/media/edit_icon.svg": "/ToDo-React-API/static/media/edit_icon.e9b0b6f1f187b69f955c.svg",
     "index.html": "/ToDo-React-API/index.html",
     "main.459b5ef5.css.map": "/ToDo-React-API/static/css/main.459b5ef5.css.map",
-    "main.3ae4a3c3.js.map": "/ToDo-React-API/static/js/main.3ae4a3c3.js.map"
+    "main.9d2d4eed.js.map": "/ToDo-React-API/static/js/main.9d2d4eed.js.map"
   },
   "entrypoints": [
     "static/css/main.459b5ef5.css",
-    "static/js/main.3ae4a3c3.js"
+    "static/js/main.9d2d4eed.js"
   ]
 }
