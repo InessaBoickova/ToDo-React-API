@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { Service } from '../../../services/SendForm';
+import { Service } from '../../../services';
 import './Task.sass'
 
 const Task = ({task, deleteItem,id,isCompleted}) =>{

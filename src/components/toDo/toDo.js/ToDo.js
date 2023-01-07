@@ -2,7 +2,8 @@ import { useState,useEffect } from "react";
 import TaskAddForm from "../taskAddForm/TaskAddForm";
 import ClearButton from "../clearButton/ClearButton";
 import AddTask from "../addTask/AddTask";
-import { Service } from "../../../services/SendForm";
+import { Service } from "../../../services";
+import {Helmet} from "react-helmet";
 import './ToDo.sass'
 
 const ToDo = () =>{
@@ -13,6 +14,7 @@ const ToDo = () =>{
         getTask().then((i)=> {
             setData(i);
         })
+        // eslint-disable-next-line
     },[])
 
     const upDate = () =>{
@@ -29,6 +31,7 @@ const ToDo = () =>{
     }
     
     const deleteAllItem = () =>{
+        // eslint-disable-next-line
         getTask().then((i)=> i.map((i)=>{
             deleteTask(i.ID);
         }));
@@ -47,8 +50,11 @@ const ToDo = () =>{
     const totalNumTask = data.length;
     return (
         <div className="todo">
+            <Helmet>
+                <title>Your ToDo List</title>
+            </Helmet>
             <header className="todo_header">
-                <h1>Your to-do list</h1>
+                <h1>Your ToDo List</h1>
             </header>
                 
             <section className="todo_wrapper">

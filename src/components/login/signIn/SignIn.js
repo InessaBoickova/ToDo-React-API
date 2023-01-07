@@ -1,5 +1,5 @@
 import '../../../style/form.sass'
-import { Service } from '../../../services/SendForm';
+import { Service } from '../../../services'
 import Spinner from '../../spinner/Spinner'
 import { useState } from 'react'
 

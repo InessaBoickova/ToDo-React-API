@@ -1,4 +1,5 @@
 import './Main.sass'
+import {Helmet} from "react-helmet";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
 import SignUp from '../signUp/SignUp';
 import SignIn from '../signIn/SignIn';
@@ -16,24 +17,27 @@ const Main = () => {
 
     return (
         <>
-        <SwitchTransition>
-            <CSSTransition
-                key={show}
-                nodeRef={nodeRef}
-                addEndListener={(done) => {
-                nodeRef.current.addEventListener("transitionend", done, false);}}
-                classNames="fade">
-            <div>
-                <div className="main">
-                    <button disabled= {!show} onClick={()=>onShow()}>Sign up</button>
-                    <button disabled = {show} onClick={()=> onShow()}>Sign in</button>
-                </div>
-                <div className="main_wrapper" ref={nodeRef}>
-                    {show ?  <SignIn/> : <SignUp ref={nodeRef}/> }
-                </div>
-            </div>
-          </CSSTransition>
-        </SwitchTransition>
+            <Helmet>
+                <title>Authorization</title>
+            </Helmet>
+            <SwitchTransition>
+                <CSSTransition
+                    key={show}
+                    nodeRef={nodeRef}
+                    addEndListener={(done) => {
+                    nodeRef.current.addEventListener("transitionend", done, false);}}
+                    classNames="fade">
+                    <div>
+                        <div className="main">
+                            <button disabled= {!show} onClick={()=>onShow()}>Sign up</button>
+                            <button disabled = {show} onClick={()=> onShow()}>Sign in</button>
+                        </div>
+                        <div className="main_wrapper" ref={nodeRef}>
+                            {show ?  <SignIn/> : <SignUp ref={nodeRef}/> }
+                        </div>
+                    </div>
+                </CSSTransition>
+            </SwitchTransition>
       </>
     )
 }
